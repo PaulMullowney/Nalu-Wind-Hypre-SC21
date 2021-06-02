@@ -1,0 +1,912 @@
+===============================================================================
+                                  Nalu-Wind                                    
+       An incompressible, turbulent computational fluid dynamics solver        
+                  for wind turbine and wind farm simulations                   
+===============================================================================
+
+   Nalu-Wind Version: v1.2.0
+   Nalu-Wind GIT Commit SHA: 7765b5b5b22a540c707ec7b240be542005995f59-DIRTY
+   Trilinos Version: 13.1-g19b4e9b64a0
+
+   TPLs: Boost, HDF5, netCDF, STK, Trilinos, yaml-cpp and zlib   
+   Optional TPLs enabled: Hypre, TIOGA
+   Copyright 2017 National Technology & Engineering Solutions of Sandia, LLC   
+   (NTESS), National Renewable Energy Laboratory, University of Texas Austin,  
+    Northwest Research Associates. Under the terms of Contract DE-NA0003525    
+    with NTESS, the U.S. Government retains certain rights in this software.   
+                                                                               
+           This software is released under the BSD 3-clause license.           
+   See LICENSE file at https://github.com/exawind/nalu-wind for more details.  
+-------------------------------------------------------------------------------
+
+macro  KOKKOS_ENABLE_CUDA      : defined
+macro  CUDA_VERSION          = 9020 = version 9.2
+Kokkos::Cuda[ 0 ] Tesla V100-SXM2-16GB capability 7.0, Total Global Memory: 15.75 G, Shared Memory per Block: 48 K : Selected
+
+Realm Options Review: realm_1
+===========================
+Edge-based scheme will be activated
+Warning: When using automatic_decomposition_type, one must have a serial file
+Nalu will deactivate aura ghosting
+
+Turbulence Model Review:   
+===========================
+Turbulence Model is: sst 1
+
+PPE review:   
+===========================
+Realm::create_mesh(): Begin
+Realm::create_mesh() End
+
+Boundary Condition Review: 
+===========================
+Wall BC name:        bc_wall on blade1
+Wall BC name:        bc_wall on blade2
+Wall BC name:        bc_wall on blade3
+Wall BC name:        bc_wall on hub
+Inflow BC name:      bc_inflow on inlet
+Open BC name:        bc_open on outlet
+Symmetry BC name:    bc_symBottom on sides
+Overset BC name: bc_overset
+
+Initial Condition Review:  
+===========================
+Initial Is Type constant 
+
+Material Prop Review:      
+===========================
+density is a constant property: 1.225
+viscosity is a constant property: 1.8e-05
+
+EqSys/options Review:      
+===========================
+Edge projected nodal gradient for minimum distance to wall: 1
+Edge projected nodal gradient for velocity: 0
+Edge projected nodal gradient for pressure: 0
+Edge projected nodal gradient for turbulent_ke: 0
+Edge projected nodal gradient for specific_dissipation_rate: 0
+
+Realm memory Review:       realm_1
+===========================
+Node count from meta data = 24415436
+Total memory estimate for Matrix solve (per core)= 2.66042 GB.
+Total memory estimate (per core) = 2.66042 GB.
+
+Time Integrator Review:  
+=========================
+StandardTimeIntegrator 
+ name=              ti_1
+ second order =     1
+ maxTimeStepCount = 10
+ fixed time step is active   with time step: 0.00455075
+StandardTimeIntegrator realm_name[0]= realm_1
+
+Transfer Review:         
+=========================
+Realm::initialize() Begin 
+Created algorithm = Alg0000_elem_HEXAHEDRON_8_geometry
+Created algorithm = Alg0000_edge_nodal_grad
+Created algorithm = Alg0000_elem_HEXAHEDRON_8_courant_reynolds
+Created algorithm = Alg0000_elem_HEXAHEDRON_8_momentum_nodal_grad
+Created algorithm = Alg0000_elem_HEXAHEDRON_8_continuity_nodal_grad
+Created algorithm = Alg0000_edge_mdot_edge_interior
+Created algorithm = Alg0000_elem_HEXAHEDRON_8_tke_nodal_grad
+Created algorithm = Alg0000_elem_HEXAHEDRON_8_sdr_nodal_grad
+Created algorithm = Alg0000_elem_WEDGE_6_geometry
+Created algorithm = Alg0000_elem_WEDGE_6_courant_reynolds
+Created algorithm = Alg0000_elem_WEDGE_6_momentum_nodal_grad
+Created algorithm = Alg0000_elem_WEDGE_6_continuity_nodal_grad
+Created algorithm = Alg0000_elem_WEDGE_6_tke_nodal_grad
+Created algorithm = Alg0000_elem_WEDGE_6_sdr_nodal_grad
+Created algorithm = Alg0000_elem_TETRAHEDRON_4_geometry
+Created algorithm = Alg0000_elem_TETRAHEDRON_4_courant_reynolds
+Created algorithm = Alg0000_elem_TETRAHEDRON_4_momentum_nodal_grad
+Created algorithm = Alg0000_elem_TETRAHEDRON_4_continuity_nodal_grad
+Created algorithm = Alg0000_elem_TETRAHEDRON_4_tke_nodal_grad
+Created algorithm = Alg0000_elem_TETRAHEDRON_4_sdr_nodal_grad
+Created algorithm = Alg0000_elem_PYRAMID_5_geometry
+Created algorithm = Alg0000_elem_PYRAMID_5_courant_reynolds
+Created algorithm = Alg0000_elem_PYRAMID_5_momentum_nodal_grad
+Created algorithm = Alg0000_elem_PYRAMID_5_continuity_nodal_grad
+Created algorithm = Alg0000_elem_PYRAMID_5_tke_nodal_grad
+Created algorithm = Alg0000_elem_PYRAMID_5_sdr_nodal_grad
+Created algorithm = Alg0001_face_QUADRILATERAL_4_geometry
+Created algorithm = Alg0003_face_QUADRILATERAL_4_nodal_grad
+MomentumEquationSystem::register_wall_bc(): Mesh motion active! Velocity definition under wall_user_data will be ignored
+Created algorithm = Alg0003_face_QUADRILATERAL_4_momentum_nodal_grad
+Created algorithm = Alg0003_face_QUADRILATERAL_4_continuity_nodal_grad
+Created algorithm = Alg0003_face_QUADRILATERAL_4_HEXAHEDRON_8_sst_geometry_wall
+Created algorithm = Alg0003_face_QUADRILATERAL_4_tke_nodal_grad
+Created algorithm = Alg0003_face_QUADRILATERAL_4_HEXAHEDRON_8_sdr_wall_func
+Created algorithm = Alg0003_face_QUADRILATERAL_4_sdr_nodal_grad
+MomentumEquationSystem::register_wall_bc(): Mesh motion active! Velocity definition under wall_user_data will be ignored
+MomentumEquationSystem::register_wall_bc(): Mesh motion active! Velocity definition under wall_user_data will be ignored
+MomentumEquationSystem::register_wall_bc(): Mesh motion active! Velocity definition under wall_user_data will be ignored
+Created algorithm = Alg0001_face_TRIANGLE_3_geometry
+Created algorithm = Alg0003_face_TRIANGLE_3_nodal_grad
+MomentumEquationSystem::register_wall_bc(): Mesh motion active! Velocity definition under wall_user_data will be ignored
+Created algorithm = Alg0003_face_TRIANGLE_3_momentum_nodal_grad
+Created algorithm = Alg0003_face_TRIANGLE_3_continuity_nodal_grad
+Created algorithm = Alg0003_face_TRIANGLE_3_WEDGE_6_sst_geometry_wall
+Created algorithm = Alg0003_face_TRIANGLE_3_tke_nodal_grad
+Created algorithm = Alg0003_face_TRIANGLE_3_WEDGE_6_sdr_wall_func
+Created algorithm = Alg0003_face_TRIANGLE_3_sdr_nodal_grad
+Created algorithm = Alg0002_face_QUADRILATERAL_4_nodal_grad
+Created algorithm = Alg0002_face_QUADRILATERAL_4_momentum_nodal_grad
+Created algorithm = Alg0002_face_QUADRILATERAL_4_continuity_nodal_grad
+Created algorithm = Alg0002_face_QUADRILATERAL_4_mdot_inflow
+Created the following bc face alg: ContinuityEQS_inflow_AssembleElemSolverAlg_QUADRILATERAL_4
+Created algorithm = Alg0002_face_QUADRILATERAL_4_tke_nodal_grad
+Created algorithm = Alg0002_face_QUADRILATERAL_4_sdr_nodal_grad
+Created algorithm = Alg0005_face_QUADRILATERAL_4_nodal_grad
+Created algorithm = Alg0005_face_QUADRILATERAL_4_momentum_nodal_grad
+Created the following bc face/elem alg: MomentumEQS_open_AssembleFaceElemSolverAlg_QUADRILATERAL_4_PYRAMID_5
+Created algorithm = Alg0005_face_QUADRILATERAL_4_PYRAMID_5_continuity_nodal_grad
+Created algorithm = Alg0005_face_QUADRILATERAL_4_PYRAMID_5_mdot_open_edge
+Created the following bc face/elem alg: ContinuityEQS_open_edge_AssembleFaceElemSolverAlg_QUADRILATERAL_4_PYRAMID_5
+Created algorithm = Alg0005_face_QUADRILATERAL_4_tke_nodal_grad
+Created the following bc face alg: TurbKineticEnergyEQS_open_AssembleElemSolverAlg_QUADRILATERAL_4
+Created algorithm = Alg0005_face_QUADRILATERAL_4_sdr_nodal_grad
+Created the following bc face alg: SpecDissRateEQS_open_AssembleElemSolverAlg_QUADRILATERAL_4
+Created algorithm = Alg0008_face_QUADRILATERAL_4_nodal_grad
+Created algorithm = Alg0008_face_QUADRILATERAL_4_momentum_nodal_grad
+Created the following bc face/elem alg: MomentumEQS_symm_edge_AssembleFaceElemSolverAlg_QUADRILATERAL_4_PYRAMID_5
+Created algorithm = Alg0008_face_QUADRILATERAL_4_continuity_nodal_grad
+Created algorithm = Alg0008_face_QUADRILATERAL_4_tke_nodal_grad
+Created algorithm = Alg0008_face_QUADRILATERAL_4_sdr_nodal_grad
+TIOGA: Using coordinates field: current_coordinates
+Realm::setup_overset_bc:: Selecting TIOGA TPL for overset connectivity
+the post processing type is surface
+the post processing file name: forces04.dat
+the post processing physics name: surface_force_and_moment
+Target name(s): blade1
+Target name(s): blade2
+Target name(s): blade3
+Target name(s): hub
+Parameters used are: 0
+Parameters used are: 0
+
+Averaging Review: one
+===========================
+Primitive/Reynolds name: density/density_ra_one size 1
+Primitive/Reynolds name: velocity/velocity_ra_one size 3
+Vorticity will be computed; add vorticity to output
+Q criterion will be computed; add q_criterion to output
+===========================
+Realm::ioBroker_->populate_mesh() Begin
+Realm::ioBroker_->populate_mesh() End
+Realm::create_edges(): Nalu Realm: realm_1 requires edge creation: Begin
+Realm::create_edges(): Nalu Realm: realm_1 requires edge creation: End
+Realm::ioBroker_->populate_field_data() Begin
+Realm::ioBroker_->populate_field_data() End
+Realm::create_output_mesh(): Begin
+Realm::create_output_mesh() End
+ DualNodalVolume min: 3.71294e-10 max: 39763.6 total: 2.92973e+09
+TIOGA: Initializing overset mesh blocks: 
+TIOGA: mesh block = NearBody; ID min = 1; ID max = 7582969
+	Bounding box: 
+		[-13.2906, -61.2646, -38.4074]
+		[10.7493, 61.2644, 69.4992]
+
+TIOGA: mesh block = FarField; ID min = 252; ID max = 23022027
+	Bounding box: 
+		[-625, -625, -625]
+		[1250, 625, 625]
+
+TIOGA: Initialized 2 overset blocks
+EquationSystems::initialize(): Begin 
+EquationSystems::initialize(): End 
+EquationSystems: overset solution strategy
+ - ndtw: decoupled
+ - momentum: decoupled
+ - continuity: decoupled
+ - turbulent_ke: decoupled
+ - specific_dissipation_rate: decoupled
+
+Realm memory Review:       realm_1
+===========================
+Total memory estimate for Matrix solve (per core)= 2.66042 GB.
+Total memory estimate for Fields (per core)= 0.333633 GB.
+Total memory estimate (per core) = 2.99405 GB.
+Realm::initialize() End 
+
+*******************************************************
+Simulation Shall Commence: number of processors = 72
+*******************************************************
+Filter Size 0.00455075
+ 1/1         myNDTW
+        WallDistEQS           23           27.9652        657.632             1
+        WallDistEQS           23           28.3435        657.632             1
+Realm shall provide output files at : currentTime/timeStepCount: 0/0 (realm_1)
+*******************************************************
+Time Step Count: 1 Current Time: 0.00455075
+ dtN: 0.00455075 dtNm1: 0.00455075 gammas: 1 -1 0
+ DualNodalVolume min: 3.71294e-10 max: 39763.6 total: 2.92973e+09
+ Max Courant: 19965.7 Max Reynolds: 7.22639e+06 (realm_1)
+   Realm Nonlinear Iteration: 1/1
+
+realm_1::advance_time_step() 
+NLI    Name           Linear Iter      Linear Res     NLinear Res    Scaled NLR
+---    ----           -----------      ----------     -----------    ----------
+1/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         14        0.00383852       0.104921             1
+        MomentumEQS_Y         14        0.00530472       0.115997             1
+        MomentumEQS_Z         14        0.00502978       0.115448             1
+        MomentumEQS           42        0.00825669       0.194402             1
+        ContinuityEQS         23         0.0958169        2.08113             1
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           47.7671        15613.8             1
+        SpecDissRateEQS        5       4.77943e+06    3.42271e+08             1
+2/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         18         0.0667987        1.49585       14.2569
+        MomentumEQS_Y         19         0.0344096       0.826786       7.12767
+        MomentumEQS_Z         19         0.0347608        0.86633       7.50405
+        MomentumEQS           56         0.0827913        1.91616       9.85671
+        ContinuityEQS         23          0.614849        17.7502       8.52911
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           10.5534        2542.81      0.162857
+        SpecDissRateEQS        2            592272    3.72481e+07      0.108826
+3/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         19         0.0502486        1.52532       14.5378
+        MomentumEQS_Y         20         0.0256914       0.775836       6.68844
+        MomentumEQS_Z         20         0.0271858       0.779634        6.7531
+        MomentumEQS           59         0.0626422        1.88052       9.67337
+        ContinuityEQS         24          0.340135        8.15433       3.91823
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           2.92087        377.064     0.0241495
+        SpecDissRateEQS        1       9.29222e+07    4.35862e+09       12.7344
+4/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         18         0.0246654       0.794685       7.57413
+        MomentumEQS_Y         17         0.0221984       0.559243        4.8212
+        MomentumEQS_Z         17          0.023526       0.564196         4.887
+        MomentumEQS           52         0.0406771        1.12365       5.78005
+        ContinuityEQS         22          0.242029        5.36113       2.57607
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   3          0.302136        6.68839   0.000428365
+        SpecDissRateEQS        1        4.3241e+07    1.71756e+10       50.1812
+Mass Balance Review:
+Density accumulation: 0
+Integrated inflow:    -15312500
+Integrated open:      15312491.83998
+Total mass closure:   -8.160019995644689
+Filter Size 0.009101499927188001
+Mean System Norm: 3435119553.54952 1 0.00455075
+WallClockTime: 1 Pre: 4.62754 NLI: 16.2036 Post: 0.028703 Total: 20.8598
+*******************************************************
+Time Step Count: 2 Current Time: 0.0091015
+ dtN: 0.00455075 dtNm1: 0.00455075 gammas: 1.5 -2 0.5
+ DualNodalVolume min: 3.71294e-10 max: 39763.6 total: 2.92973e+09
+ Max Courant: 7995.98 Max Reynolds: 7.39241e+06 (realm_1)
+   Realm Nonlinear Iteration: 1/1
+
+realm_1::advance_time_step() 
+NLI    Name           Linear Iter      Linear Res     NLinear Res    Scaled NLR
+---    ----           -----------      ----------     -----------    ----------
+1/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         15          0.081746          2.736             1
+        MomentumEQS_Y         14         0.0773804        1.79621             1
+        MomentumEQS_Z         15         0.0555521        1.82325             1
+        MomentumEQS           44          0.125524         3.7465             1
+        ContinuityEQS         28          0.271718         6.0697             1
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           25.6893        9447.74             1
+        SpecDissRateEQS        2            849642    1.34175e+09             1
+2/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         18         0.0740021         2.2011      0.804497
+        MomentumEQS_Y         18         0.0470114        1.35581      0.754819
+        MomentumEQS_Z         17         0.0619055        1.38371      0.758925
+        MomentumEQS           53          0.107325        2.93219      0.782647
+        ContinuityEQS         24          0.187095        4.24873      0.699989
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2            5.6147        1138.07      0.120459
+        SpecDissRateEQS        2            344107    3.46039e+07     0.0257901
+3/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         16         0.0410282        1.24429      0.454786
+        MomentumEQS_Y         16         0.0241556       0.729878      0.406344
+        MomentumEQS_Z         16          0.022311       0.743167      0.407605
+        MomentumEQS           48         0.0525794        1.62274      0.433135
+        ContinuityEQS         24          0.178487        3.88527      0.640108
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           1.78059        99.1331     0.0104928
+        SpecDissRateEQS        2           66999.5    1.67069e+07     0.0124516
+4/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         16         0.0281805       0.706577      0.258252
+        MomentumEQS_Y         16         0.0141454       0.417614      0.232498
+        MomentumEQS_Z         16         0.0147103       0.423296      0.232165
+        MomentumEQS           48         0.0347941       0.923489      0.246494
+        ContinuityEQS         24          0.119495        3.53286      0.582048
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   6         0.0301591       0.742782   7.86201e-05
+        SpecDissRateEQS        1            213874    1.52937e+07     0.0113983
+Mass Balance Review:
+Density accumulation: 0
+Integrated inflow:    -15312500
+Integrated open:      15312482.23242384
+Total mass closure:   -17.76757616177201
+Filter Size 0.013652249890782
+Mean System Norm: 3058877.744142947 2 0.0091015
+WallClockTime: 2 Pre: 4.45089 NLI: 11.4547 Post: 0.0289669 Total: 15.9346
+*******************************************************
+Time Step Count: 3 Current Time: 0.0136522
+ dtN: 0.00455075 dtNm1: 0.00455075 gammas: 1.5 -2 0.5
+ DualNodalVolume min: 3.71294e-10 max: 39763.6 total: 2.92973e+09
+ Max Courant: 2053.56 Max Reynolds: 7.59064e+06 (realm_1)
+   Realm Nonlinear Iteration: 1/1
+
+realm_1::advance_time_step() 
+NLI    Name           Linear Iter      Linear Res     NLinear Res    Scaled NLR
+---    ----           -----------      ----------     -----------    ----------
+1/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         14          0.104818        3.18598             1
+        MomentumEQS_Y         13         0.0911786        2.21017             1
+        MomentumEQS_Z         13         0.0976289        2.22143             1
+        MomentumEQS           40          0.169799        4.46879             1
+        ContinuityEQS         23          0.139718        2.92691             1
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           14.4247        4551.52             1
+        SpecDissRateEQS        2            268855    1.06198e+08             1
+2/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         16         0.0280216       0.904465      0.283889
+        MomentumEQS_Y         16         0.0161996       0.541807      0.245143
+        MomentumEQS_Z         16         0.0171255       0.553276      0.249064
+        MomentumEQS           48         0.0366186        1.19068      0.266444
+        ContinuityEQS         22         0.0800907         1.8844      0.643818
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           3.35554        466.774      0.102553
+        SpecDissRateEQS        2           81793.5    7.53135e+06      0.070918
+3/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         17         0.0127828       0.436653      0.137055
+        MomentumEQS_Y         16         0.0137272       0.292964      0.132553
+        MomentumEQS_Z         16         0.0139153       0.299711      0.134918
+        MomentumEQS           49         0.0233553       0.605244      0.135438
+        ContinuityEQS         24         0.0475296         1.4155      0.483614
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           1.21929         25.677    0.00564141
+        SpecDissRateEQS        2           31856.7      3.648e+06     0.0343509
+4/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         17         0.0130573       0.277723     0.0871704
+        MomentumEQS_Y         17        0.00873822       0.197519     0.0893683
+        MomentumEQS_Z         17        0.00859113       0.202553     0.0911813
+        MomentumEQS           51         0.0179069       0.396448      0.088715
+        ContinuityEQS         22         0.0553994         1.1892      0.406297
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   9        0.00380618       0.102622   2.25467e-05
+        SpecDissRateEQS        2           17700.7     2.2659e+06     0.0213365
+Mass Balance Review:
+Density accumulation: 0
+Integrated inflow:    -15312500
+Integrated open:      15312476.26617927
+Total mass closure:   -23.7338207308203
+Filter Size 0.018202999854376
+Mean System Norm: 453311.3998494674 3 0.0136522
+WallClockTime: 3 Pre: 4.66947 NLI: 13.672 Post: 0.0289791 Total: 18.3705
+*******************************************************
+Time Step Count: 4 Current Time: 0.018203
+ dtN: 0.00455075 dtNm1: 0.00455075 gammas: 1.5 -2 0.5
+ DualNodalVolume min: 3.71294e-10 max: 39763.6 total: 2.92973e+09
+ Max Courant: 1483.99 Max Reynolds: 7.78893e+06 (realm_1)
+   Realm Nonlinear Iteration: 1/1
+
+realm_1::advance_time_step() 
+NLI    Name           Linear Iter      Linear Res     NLinear Res    Scaled NLR
+---    ----           -----------      ----------     -----------    ----------
+1/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         14         0.0715612        2.34933             1
+        MomentumEQS_Y         13         0.0719832        1.63344             1
+        MomentumEQS_Z         13         0.0681543        1.63071             1
+        MomentumEQS           40           0.12226        3.29343             1
+        ContinuityEQS         23           0.06449        1.47476             1
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           8.09498        2326.37             1
+        SpecDissRateEQS        2            165918    5.56822e+07             1
+2/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         17         0.0146861       0.365553      0.155599
+        MomentumEQS_Y         18        0.00708254       0.214702      0.131442
+        MomentumEQS_Z         18        0.00651296       0.216651      0.132857
+        MomentumEQS           53         0.0175574       0.476092      0.144558
+        ContinuityEQS         21         0.0624034        1.36552      0.925925
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           1.97461        205.629     0.0883906
+        SpecDissRateEQS        2           50264.6    1.83661e+06     0.0329838
+3/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         17         0.0082117       0.284969      0.121298
+        MomentumEQS_Y         17        0.00821614       0.178558      0.109314
+        MomentumEQS_Z         17        0.00753528       0.180631      0.110769
+        MomentumEQS           51         0.0138462        0.38173      0.115907
+        ContinuityEQS         20         0.0563866        1.35072      0.915891
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   3          0.165625        7.01186    0.00301408
+        SpecDissRateEQS        2           18750.7         425408    0.00763993
+4/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         16         0.0106098       0.237865      0.101248
+        MomentumEQS_Y         17        0.00662337       0.161775     0.0990398
+        MomentumEQS_Z         17        0.00592555       0.163592       0.10032
+        MomentumEQS           50         0.0138401       0.330928      0.100481
+        ContinuityEQS         19         0.0586205        1.35964      0.921937
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS  11       0.000804546      0.0176651   7.59341e-06
+        SpecDissRateEQS        2           10424.7         232404    0.00417376
+Mass Balance Review:
+Density accumulation: 0
+Integrated inflow:    -15312500
+Integrated open:      15312473.77628414
+Total mass closure:   -26.22371585853398
+Filter Size 0.02275374981797
+Mean System Norm: 46612.62666077059 4 0.018203
+WallClockTime: 4 Pre: 5.06258 NLI: 13.2595 Post: 0.062696 Total: 18.3848
+*******************************************************
+Time Step Count: 5 Current Time: 0.0227537
+ dtN: 0.00455075 dtNm1: 0.00455075 gammas: 1.5 -2 0.5
+ DualNodalVolume min: 3.71294e-10 max: 39763.6 total: 2.92973e+09
+ Max Courant: 1409.59 Max Reynolds: 7.95862e+06 (realm_1)
+   Realm Nonlinear Iteration: 1/1
+
+realm_1::advance_time_step() 
+NLI    Name           Linear Iter      Linear Res     NLinear Res    Scaled NLR
+---    ----           -----------      ----------     -----------    ----------
+1/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         14         0.0598759         1.7476             1
+        MomentumEQS_Y         14         0.0500782        1.22002             1
+        MomentumEQS_Z         14         0.0438358        1.21288             1
+        MomentumEQS           42         0.0895239        2.45227             1
+        ContinuityEQS         20         0.0654313        1.65047             1
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           4.80883        1303.96             1
+        SpecDissRateEQS        2            106210    3.20966e+07             1
+2/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         17        0.00830158       0.310302      0.177559
+        MomentumEQS_Y         17        0.00855295       0.205555      0.168484
+        MomentumEQS_Z         17        0.00769804       0.204012      0.168204
+        MomentumEQS           51          0.014189       0.424454      0.173086
+        ContinuityEQS         18         0.0549374        1.61994      0.981505
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           1.26123        101.202     0.0776112
+        SpecDissRateEQS        3           6294.63         640536     0.0199565
+3/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         16          0.011039       0.271371      0.155282
+        MomentumEQS_Y         17        0.00699599       0.181521      0.148784
+        MomentumEQS_Z         17        0.00625181       0.180912      0.149159
+        MomentumEQS           50         0.0144875       0.373257      0.152209
+        ContinuityEQS         17         0.0733638         1.6426      0.995232
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   4         0.0525328        2.24335    0.00172041
+        SpecDissRateEQS        4           769.009        34148.1    0.00106391
+4/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         16        0.00725197       0.241632      0.138265
+        MomentumEQS_Y         17          0.005039       0.166641      0.136588
+        MomentumEQS_Z         17        0.00459928        0.16603      0.136889
+        MomentumEQS           50        0.00995671       0.337226      0.137516
+        ContinuityEQS         17         0.0551968         1.6651       1.00887
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS  13       0.000186209     0.00452019    3.4665e-06
+        SpecDissRateEQS        4           543.596        17692.4   0.000551221
+Mass Balance Review:
+Density accumulation: 0
+Integrated inflow:    -15312500
+Integrated open:      15312474.73633911
+Total mass closure:   -25.2636608928442
+Filter Size 0.027304499781564
+Mean System Norm: 3670.398478234536 5 0.0227537
+WallClockTime: 5 Pre: 5.37339 NLI: 10.9761 Post: 0.0288949 Total: 16.3784
+*******************************************************
+Time Step Count: 6 Current Time: 0.0273045
+ dtN: 0.00455075 dtNm1: 0.00455075 gammas: 1.5 -2 0.5
+ DualNodalVolume min: 3.71294e-10 max: 39763.6 total: 2.92973e+09
+ Max Courant: 1356.31 Max Reynolds: 8.09148e+06 (realm_1)
+   Realm Nonlinear Iteration: 1/1
+
+realm_1::advance_time_step() 
+NLI    Name           Linear Iter      Linear Res     NLinear Res    Scaled NLR
+---    ----           -----------      ----------     -----------    ----------
+1/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         14         0.0483509        1.19074             1
+        MomentumEQS_Y         15         0.0266503       0.802386             1
+        MomentumEQS_Z         15         0.0232379       0.797505             1
+        MomentumEQS           44         0.0599003        1.64247             1
+        ContinuityEQS         19          0.056288        1.68382             1
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           3.11443        806.869             1
+        SpecDissRateEQS        2           72437.6    2.03748e+07             1
+2/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         16        0.00992554       0.235469      0.197751
+        MomentumEQS_Y         17        0.00655287          0.165      0.205637
+        MomentumEQS_Z         17         0.0057037        0.16265      0.203948
+        MomentumEQS           50         0.0131905       0.330342      0.201125
+        ContinuityEQS         17         0.0547436        1.62731      0.966438
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2          0.968789        55.9641     0.0693596
+        SpecDissRateEQS        3           4743.18         283349     0.0139069
+3/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         16         0.0066187        0.21797      0.183054
+        MomentumEQS_Y         17        0.00432416       0.151219      0.188461
+        MomentumEQS_Z         16         0.0066061       0.149554      0.187528
+        MomentumEQS           49         0.0103027        0.30454      0.185416
+        ContinuityEQS         17         0.0594573        1.62548      0.965351
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   5         0.0226127       0.868373    0.00107623
+        SpecDissRateEQS        7           66.4652        2532.26   0.000124284
+4/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         15        0.00768847       0.199116      0.167221
+        MomentumEQS_Y         16         0.0047377        0.13917      0.173445
+        MomentumEQS_Z         16        0.00393963        0.13763      0.172575
+        MomentumEQS           47        0.00985287       0.279209      0.169993
+        ContinuityEQS         17         0.0696928        1.63033      0.968234
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS  14       6.63654e-05     0.00185607   2.30034e-06
+        SpecDissRateEQS        7           53.6973         1355.6   6.65331e-05
+Mass Balance Review:
+Density accumulation: 0
+Integrated inflow:    -15312500
+Integrated open:      15312477.87854082
+Total mass closure:   -22.12145918421447
+Filter Size 0.031855249745158
+Mean System Norm: 403.0280846892732 6 0.0273045
+WallClockTime: 6 Pre: 5.57309 NLI: 10.6847 Post: 0.028713 Total: 16.2865
+*******************************************************
+Time Step Count: 7 Current Time: 0.0318552
+ dtN: 0.00455075 dtNm1: 0.00455075 gammas: 1.5 -2 0.5
+ DualNodalVolume min: 3.71294e-10 max: 39763.6 total: 2.92973e+09
+ Max Courant: 1270.1 Max Reynolds: 8.19315e+06 (realm_1)
+   Realm Nonlinear Iteration: 1/1
+
+realm_1::advance_time_step() 
+NLI    Name           Linear Iter      Linear Res     NLinear Res    Scaled NLR
+---    ----           -----------      ----------     -----------    ----------
+1/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         14         0.0289157       0.809271             1
+        MomentumEQS_Y         15           0.01787       0.484874             1
+        MomentumEQS_Z         15         0.0139766       0.484784             1
+        MomentumEQS           44         0.0367533        1.06068             1
+        ContinuityEQS         18         0.0599883        1.45265             1
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           2.25783         545.83             1
+        SpecDissRateEQS        2           52444.8     1.4081e+07             1
+2/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         16         0.0049603       0.174314      0.215397
+        MomentumEQS_Y         16        0.00581477       0.123339      0.254373
+        MomentumEQS_Z         16         0.0048799       0.121068      0.249737
+        MomentumEQS           48        0.00906805        0.24547      0.231428
+        ContinuityEQS         17         0.0620992        1.32993      0.915525
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2          0.976984        34.2769     0.0627978
+        SpecDissRateEQS        3           3558.63         146030     0.0103708
+3/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         15        0.00593026       0.157234      0.194291
+        MomentumEQS_Y         16        0.00322946       0.110667       0.22824
+        MomentumEQS_Z         16        0.00321157       0.108727      0.224279
+        MomentumEQS           47        0.00747741       0.220888      0.208251
+        ContinuityEQS         16         0.0606999         1.2684      0.873167
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   6         0.0118512       0.400564   0.000733862
+        SpecDissRateEQS       10            9.1195        262.909   1.86712e-05
+4/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         15         0.0040105        0.14012      0.173143
+        MomentumEQS_Y         15        0.00390032      0.0986298      0.203413
+        MomentumEQS_Z         15         0.0043147      0.0969008      0.199884
+        MomentumEQS           45        0.00706493       0.196853      0.185592
+        ContinuityEQS         18         0.0412491        1.23305       0.84883
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS  14        5.5025e-05     0.00156998   2.87631e-06
+        SpecDissRateEQS       11           3.92102        134.046   9.51962e-06
+Mass Balance Review:
+Density accumulation: 0
+Integrated inflow:    -15312500
+Integrated open:      15312482.41324557
+Total mass closure:   -17.58675443008542
+Filter Size 0.036405999708752
+Mean System Norm: 158.6217797709398 7 0.0318552
+WallClockTime: 7 Pre: 5.7445 NLI: 11.1622 Post: 0.029206 Total: 16.9359
+*******************************************************
+Time Step Count: 8 Current Time: 0.036406
+ dtN: 0.00455075 dtNm1: 0.00455075 gammas: 1.5 -2 0.5
+ DualNodalVolume min: 3.71294e-10 max: 39763.6 total: 2.92973e+09
+ Max Courant: 1198.24 Max Reynolds: 8.27285e+06 (realm_1)
+   Realm Nonlinear Iteration: 1/1
+
+realm_1::advance_time_step() 
+NLI    Name           Linear Iter      Linear Res     NLinear Res    Scaled NLR
+---    ----           -----------      ----------     -----------    ----------
+1/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         13          0.026738       0.666113             1
+        MomentumEQS_Y         14          0.015644       0.326891             1
+        MomentumEQS_Z         14         0.0153568       0.329027             1
+        MomentumEQS           41         0.0345758       0.811679             1
+        ContinuityEQS         18         0.0334346        1.00177             1
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           1.88047        396.426             1
+        SpecDissRateEQS        2           39906.7    1.04028e+07             1
+2/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         15        0.00513625       0.118625      0.178086
+        MomentumEQS_Y         16          0.003059      0.0846194      0.258861
+        MomentumEQS_Z         16        0.00340256      0.0827121      0.251384
+        MomentumEQS           47        0.00687866       0.167552      0.206426
+        ContinuityEQS         16         0.0416171       0.879023      0.877471
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   3          0.172953        22.7462     0.0573782
+        SpecDissRateEQS        3           2659.49        84938.3    0.00816493
+3/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         15        0.00367503      0.0937737      0.140777
+        MomentumEQS_Y         16        0.00214548      0.0674277       0.20627
+        MomentumEQS_Z         16        0.00237753      0.0656307      0.199469
+        MomentumEQS           47        0.00487458       0.132844      0.163665
+        ContinuityEQS         17         0.0322309       0.804619      0.803199
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   6         0.0100187        0.21247   0.000535964
+        SpecDissRateEQS       11           4.38662         94.988   9.13099e-06
+4/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         15        0.00277737      0.0766679      0.115097
+        MomentumEQS_Y         16        0.00163922      0.0545361      0.166833
+        MomentumEQS_Z         16        0.00176297       0.053024      0.161154
+        MomentumEQS           47        0.00367545       0.107999      0.133056
+        ContinuityEQS         17         0.0253515        0.75769      0.756352
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS  14       4.57772e-05     0.00174404    4.3994e-06
+        SpecDissRateEQS       12           2.21997        47.8109   4.59596e-06
+Mass Balance Review:
+Density accumulation: 0
+Integrated inflow:    -15312500
+Integrated open:      15312487.71914
+Total mass closure:   -12.28086000308394
+Filter Size 0.04095674967234601
+Mean System Norm: 141.2620375731759 8 0.036406
+WallClockTime: 8 Pre: 6.03654 NLI: 11.9533 Post: 0.0428638 Total: 18.0327
+*******************************************************
+Time Step Count: 9 Current Time: 0.0409567
+ dtN: 0.00455075 dtNm1: 0.00455075 gammas: 1.5 -2 0.5
+ DualNodalVolume min: 3.71294e-10 max: 39763.6 total: 2.92973e+09
+ Max Courant: 1130.57 Max Reynolds: 8.33807e+06 (realm_1)
+   Realm Nonlinear Iteration: 1/1
+
+realm_1::advance_time_step() 
+NLI    Name           Linear Iter      Linear Res     NLinear Res    Scaled NLR
+---    ----           -----------      ----------     -----------    ----------
+1/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         13         0.0178628       0.669898             1
+        MomentumEQS_Y         14        0.00979569       0.305361             1
+        MomentumEQS_Z         14         0.0112772       0.305353             1
+        MomentumEQS           41         0.0232854       0.797025             1
+        ContinuityEQS         18         0.0251822       0.569313             1
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           1.78566        303.434             1
+        SpecDissRateEQS        2           31591.5    8.07114e+06             1
+2/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         15        0.00387013      0.0950192      0.141841
+        MomentumEQS_Y         16        0.00206942      0.0679963      0.222675
+        MomentumEQS_Z         16        0.00224171      0.0664112       0.21749
+        MomentumEQS           47        0.00492805       0.134397      0.168623
+        ContinuityEQS         18         0.0179875       0.454256      0.797903
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   3          0.161699        16.0184     0.0527903
+        SpecDissRateEQS        3           2036.88        54077.4     0.0067001
+3/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         16        0.00161752      0.0506408     0.0755948
+        MomentumEQS_Y         16        0.00147259      0.0389086      0.127418
+        MomentumEQS_Z         16        0.00156353      0.0374427      0.122621
+        MomentumEQS           48        0.00268877      0.0740292     0.0928819
+        ContinuityEQS         20         0.0131249       0.370097      0.650078
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   7        0.00372842       0.124997   0.000411941
+        SpecDissRateEQS       12           2.12026        59.8308   7.41294e-06
+4/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         16        0.00128423       0.032053     0.0478475
+        MomentumEQS_Y         16        0.00111216      0.0242134     0.0792944
+        MomentumEQS_Z         17       0.000664277      0.0231944     0.0759594
+        MomentumEQS           49        0.00182412       0.046386     0.0581989
+        ContinuityEQS         19        0.00994606       0.312469      0.548852
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS  13       7.30127e-05     0.00186344   6.14115e-06
+        SpecDissRateEQS       13          0.948323        31.0704   3.84956e-06
+Mass Balance Review:
+Density accumulation: 0
+Integrated inflow:    -15312500
+Integrated open:      15312493.31428134
+Total mass closure:   -6.685718659311533
+Filter Size 0.04550749963594001
+Mean System Norm: 137.8125799229877 9 0.0409567
+WallClockTime: 9 Pre: 6.22684 NLI: 12.4867 Post: 0.030087 Total: 18.7436
+*******************************************************
+Time Step Count: 10 Current Time: 0.0455075
+ dtN: 0.00455075 dtNm1: 0.00455075 gammas: 1.5 -2 0.5
+ DualNodalVolume min: 3.71294e-10 max: 39763.6 total: 2.92973e+09
+ Max Courant: 1068.51 Max Reynolds: 8.3937e+06 (realm_1)
+   Realm Nonlinear Iteration: 1/1
+
+realm_1::advance_time_step() 
+NLI    Name           Linear Iter      Linear Res     NLinear Res    Scaled NLR
+---    ----           -----------      ----------     -----------    ----------
+1/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         12         0.0261875       0.697525             1
+        MomentumEQS_Y         13          0.011417       0.317625             1
+        MomentumEQS_Z         13         0.0131155        0.31559             1
+        MomentumEQS           38         0.0314349       0.828869             1
+        ContinuityEQS         20         0.0115962       0.270328             1
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   2           1.83068        241.194             1
+        SpecDissRateEQS        2           25831.2    6.48658e+06             1
+2/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         15        0.00298169       0.101811       0.14596
+        MomentumEQS_Y         15        0.00237572      0.0734696      0.231309
+        MomentumEQS_Z         15         0.0025883      0.0716004      0.226878
+        MomentumEQS           45        0.00460802       0.144533      0.174374
+        ContinuityEQS         19        0.00889365       0.237139      0.877226
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   3          0.153843        11.7824     0.0488501
+        SpecDissRateEQS        3           1644.56        36769.2    0.00566851
+3/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         15        0.00218054      0.0546997     0.0784198
+        MomentumEQS_Y         15         0.0017533      0.0414588      0.130527
+        MomentumEQS_Z         15        0.00187061      0.0403872      0.127973
+        MomentumEQS           45        0.00336571      0.0796368     0.0960788
+        ContinuityEQS         20         0.0089094       0.237883       0.87998
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS   7        0.00323471      0.0793044   0.000328799
+        SpecDissRateEQS       12           1.32535        41.5933    6.4122e-06
+4/4    Equation System Iteration
+ 1/1      myLowMach
+        MomentumEQS_X         15        0.00166798      0.0433163        0.0621
+        MomentumEQS_Y         15        0.00139689      0.0319862      0.100704
+        MomentumEQS_Z         15        0.00144083      0.0316019      0.100136
+        MomentumEQS           45        0.00260949      0.0624347     0.0753252
+        ContinuityEQS         20         0.0118635       0.252077      0.932488
+ 1/1ShearStressTransportWrap
+        TurbKineticEnergyEQS  13        7.3454e-05     0.00189111   7.84063e-06
+        SpecDissRateEQS       12           1.04667        23.1393   3.56725e-06
+Mass Balance Review:
+Density accumulation: 0
+Integrated inflow:    -15312500
+Integrated open:      15312498.93848406
+Total mass closure:   -1.061515938490629
+Filter Size 0.05005824959953401
+Mean System Norm: 136.2174978129333 10 0.0455075
+WallClockTime: 10 Pre: 6.41839 NLI: 12.7495 Post: 0.028579 Total: 19.1965
+*******************************************************
+Simulation Shall Complete: time/timestep: 0.0455075/10
+*******************************************************
+
+-------------------------------- 
+Begin Timer Overview for Realm: realm_1
+-------------------------------- 
+Timing for Eq: myNDTW
+             init --   	avg: 0.520059 	min: 0.472516 	max: 0.571489
+         assemble --   	avg: 0.101829 	min: 0.0399501 	max: 0.153739
+    load_complete --   	avg: 0.642751 	min: 0.336977 	max: 0.99469
+            solve --   	avg: 1.69028 	min: 1.68405 	max: 1.69432
+    precond setup --   	avg: 1.44045 	min: 1.44041 	max: 1.44066
+             misc --   	avg: 0 	min: 0 	max: 0
+linear iterations --  	avg: 23 	min: 23 	max: 23
+Timing for Eq: myLowMach
+             init --   	avg: 3.63588e-06 	min: 0 	max: 8.10623e-06
+         assemble --   	avg: 0 	min: 0 	max: 0
+    load_complete --   	avg: 0 	min: 0 	max: 0
+            solve --   	avg: 0 	min: 0 	max: 0
+    precond setup --   	avg: 0 	min: 0 	max: 0
+             misc --   	avg: 0 	min: 0 	max: 0
+Timing for Eq: MomentumEQS
+             init --   	avg: 0.562477 	min: 0.552236 	max: 0.577675
+         assemble --   	avg: 1.96778 	min: 1.46978 	max: 2.47535
+    load_complete --   	avg: 8.99145 	min: 7.73527 	max: 12.3921
+            solve --   	avg: 15.6274 	min: 15.4344 	max: 15.7408
+    precond setup --   	avg: 5.78496e-06 	min: 0 	max: 1.12057e-05
+             misc --   	avg: 4.60135 	min: 3.48063 	max: 4.83679
+linear iterations --  	avg: 47.275 	min: 38 	max: 59
+Timing for Eq: ContinuityEQS
+             init --   	avg: 0.538956 	min: 0.518746 	max: 0.556552
+         assemble --   	avg: 3.18126 	min: 2.44359 	max: 3.37359
+    load_complete --   	avg: 5.49516 	min: 5.17876 	max: 6.45982
+            solve --   	avg: 23.1621 	min: 23.042 	max: 23.2421
+    precond setup --   	avg: 29.3113 	min: 29.3094 	max: 29.3145
+             misc --   	avg: 5.14791 	min: 4.30382 	max: 5.49563
+linear iterations --  	avg: 19.975 	min: 16 	max: 28
+Timing for Eq: mySST
+             init --   	avg: 2.5034e-06 	min: 0 	max: 6.19888e-06
+         assemble --   	avg: 0 	min: 0 	max: 0
+    load_complete --   	avg: 0 	min: 0 	max: 0
+            solve --   	avg: 0 	min: 0 	max: 0
+    precond setup --   	avg: 0 	min: 0 	max: 0
+             misc --   	avg: 0 	min: 0 	max: 0
+Timing for Eq: TurbKineticEnergyEQS
+             init --   	avg: 0.557952 	min: 0.545679 	max: 0.581568
+         assemble --   	avg: 0.633371 	min: 0.520849 	max: 0.74283
+    load_complete --   	avg: 5.50752 	min: 5.3268 	max: 5.76034
+            solve --   	avg: 2.3947 	min: 2.29241 	max: 2.46152
+    precond setup --   	avg: 0.455477 	min: 0.446302 	max: 0.464431
+             misc --   	avg: 2.34575 	min: 1.44835 	max: 2.619
+linear iterations --  	avg: 4.925 	min: 2 	max: 14
+Timing for Eq: SpecDissRateEQS
+             init --   	avg: 0.562703 	min: 0.553529 	max: 0.58374
+         assemble --   	avg: 0.706851 	min: 0.570636 	max: 0.837317
+    load_complete --   	avg: 5.44641 	min: 5.27751 	max: 5.65051
+            solve --   	avg: 2.44338 	min: 2.3385 	max: 2.51261
+    precond setup --   	avg: 0.456156 	min: 0.446764 	max: 0.465147
+             misc --   	avg: 2.44267 	min: 2.06047 	max: 2.50642
+linear iterations --  	avg: 4.425 	min: 1 	max: 13
+Timing for IO: 
+   io create mesh --   	avg: 0.00181446 	min: 0.00131512 	max: 0.00231504
+ io output fields --   	avg: 1.04839 	min: 0.995085 	max: 1.15375
+ io populate mesh --   	avg: 27.0981 	min: 27.0953 	max: 27.0981
+ io populate fd   --   	avg: 3.96337 	min: 3.95779 	max: 3.96397
+Timing for property evaluation:         
+            props --   	avg: 1.07835 	min: 0.447116 	max: 1.73204
+Timing for Edge: 
+    edge creation --   	avg: 23.0339 	min: 23.0333 	max: 23.0395
+Timing for Overset:
+     connectivity --  	avg: 0.102419 	min: 0.102415 	max: 0.102426
+     field update --  	avg: 6.06378 	min: 0.848663 	max: 8.42026
+Timing for skin_mesh :    
+        skin_mesh --   	avg: 0 	min: 0 	max: 0
+
+Timing for Simulation: nprocs= 72
+           main() --   	avg: 261.663 	min: 261.49 	max: 261.773
+Memory Overview: 
+nalu memory: total (over all cores) current/high-water mark=       246.288 G      247.042 G
+nalu memory:   min (over all cores) current/high-water mark=       2.54053 G      2.54242 G
+nalu memory:   max (over all cores) current/high-water mark=       4.40588 G      4.41388 G
+Min High-water memory usage 2603.4 MB
+Avg High-water memory usage 3513.5 MB
+Max High-water memory usage 4519.8 MB
+
+Min Available memory per processor 3518.9 MB
+Avg Available memory per processor 3518.9 MB
+Max Available memory per processor 3518.9 MB
+
+Min No-output time 260.3892 sec
+Avg No-output time 260.6149 sec
+Max No-output time 260.7658 sec
+
+STKPERF: Total Time: 261.65
+
+STKPERF: Current memory: 2782003200 (2.591 G)
+STKPERF: Memory high water: 2783051776 (2.592 G)
+                                                     CPU Time              CPU Time              CPU Time              Wall Time             Wall Time             Wall Time
+                 Timer                   Count   Sum (% of System)     Min (% of System)     Max (% of System)     Sum (% of System)     Min (% of System)     Max (% of System)
+---------------------------------------- ----- --------------------- --------------------- --------------------- --------------------- --------------------- ---------------------
+Nalu                                        72  4:58:54.127 (100.0%)     4:03.692 (1.359%)     4:12.062 (1.405%)  5:14:00.069 (100.0%)     4:21.495 (1.388%)     4:21.778 (1.389%)
+  CreateEdges                               72    27:39.152 (9.251%)       23.041 (0.128%)       23.050 (0.129%)    27:38.439 (8.803%)       23.033 (0.122%)       23.039 (0.122%)
+  Output                                  1584     1:09.067 (0.385%)        0.883 (<0.01%)        1.033 (<0.01%)     1:15.486 (0.401%)        0.995 (<0.01%)        1.154 (<0.01%)
+
+Took 0.0005 seconds to generate the table above.
+=====================================================================================
+
+                       TimeMonitor results over 72 processors
+
+Timer Name    MinOverProcs    MeanOverProcs    MaxOverProcs    MeanOverCallCounts    
+=====================================================================================
