@@ -26,6 +26,8 @@ Results from the [the SC Tech Program Author Kit](https://github.com/SC-Tech-Pro
 ### Trilinos
  - git clone git@github.com:trilinos/Trilinos.git
  - cd Trilinos
+ - git checkout 937c9ae018b
+   We're gonna use the checkpoint associated with generating our results.
 
 ##### CPU
  - mkdir build_cpu
@@ -35,6 +37,7 @@ Results from the [the SC Tech Program Author Kit](https://github.com/SC-Tech-Pro
 
    TRILINOS_INSTALL_PREFIX=/PATH/TO/CPU/INSTALL/trilinos-master-$(date +%Y-%m-%d)
    
+
  - ./trilinos-gcc.sh cmake_full -DTPL_ENABLE_ParMETIS=ON
  - ./trilinos-gcc.sh make -j4 (or -j42 if on an interactive shell)
  - ./trilinos-gcc.sh make install
